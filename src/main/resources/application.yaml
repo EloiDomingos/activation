@@ -1,0 +1,28 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: product-activation-api
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/activation_db}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          time_zone: UTC
+    show-sql: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+app:
+  provider:
+    url: ${PROVIDER_URL:http://localhost:8081}
+    timeout: 5000
